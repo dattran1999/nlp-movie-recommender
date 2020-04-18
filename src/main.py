@@ -33,11 +33,11 @@ def recommend_movie(title: str, movies_list: np.ndarray, similarity_matrix: np.n
         if movie == title:
             break
     movies_vector = similarity_matrix[i]
-    similarity = np.column_stack((movies_list[:,0], movies_vector))
+    similarity = np.column_stack((movies_list, movies_vector))
     # get top 5 movies
     similarity = similarity[similarity[:,1].argsort()]
     return similarity[:,0][-6:-1]
 
 if __name__ == "__main__":
-    movies = recommend_movie('No Time to Die', movies_list, similarity_matrix)
+    movies = recommend_movie('No Time to Die', movies_list[:,0], similarity_matrix)
     print(movies)
