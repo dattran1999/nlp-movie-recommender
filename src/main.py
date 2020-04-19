@@ -14,7 +14,9 @@ for movie in movies:
     title = movie[1]
     description = movie[2]
     genre = movie[3]
-    movies_list.append([title, description + genre])
+    main_genre = genre.split(',')[0]
+    # TODO: put more weight on genre
+    movies_list.append([title, description + genre + genre + main_genre])
 
 movies_list = np.array(movies_list)
 count = CountVectorizer()
@@ -39,5 +41,5 @@ def recommend_movie(title: str, movies_list: np.ndarray, similarity_matrix: np.n
     return similarity[:,0][-6:-1]
 
 if __name__ == "__main__":
-    movies = recommend_movie('No Time to Die', movies_list[:,0], similarity_matrix)
+    movies = recommend_movie('Spider-Man: Far from Home', movies_list[:,0], similarity_matrix)
     print(movies)
