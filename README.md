@@ -1,5 +1,5 @@
 # nlp-movie-recommender
-Recommend movies based on the similarity in description
+Recommend movies based on the similarity in the descriptions. Descriptions are processed by transforming into bag of words. Then we use cosine similarity to calculate the how close are the descriptions. 
 
 ## Requirements
 ```
