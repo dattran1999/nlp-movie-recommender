@@ -8,7 +8,7 @@ pip3 install -r requirements.txt
 
 ## Running the model
 The current version only support reading the database from this [app](http://moviesengine.herokuapp.com/). <br />
-Alternatively, you can create a database with the schema provided in the src folder, and populate it with some movie data (e.g. data from [IMDb](https://www.imdb.com/interfaces/)).<br /> 
+Alternatively, you can create a database with the schema provided in the src folder, and populate it with some movie data (e.g. data from [IMDb](https://www.imdb.com/interfaces/)). Then navigate to src/db_connection.py to change the database connection.<br /> 
 To run the code, 
 ```
 python3 src/main.py
