@@ -12,6 +12,13 @@ create table Movies (
     unique (title, summary)
 );
 
+create table RecommendedMovies (
+    movie_id integer,
+    recommended_movie_id integer,
+    foreign key (movie_id) references Movies(id),
+    foreign key (recommended_movie_id) references Movies(id)
+); 
+
 create table Cinemas (
     id integer generated always as identity,
     name text,
