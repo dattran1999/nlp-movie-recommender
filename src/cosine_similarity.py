@@ -23,6 +23,7 @@ count = CountVectorizer()
 # create bag of words for the descriptions
 bag_of_words = count.fit_transform(movies_list[:,1])
 similarity_matrix = cosine_similarity(bag_of_words, bag_of_words)
+print(similarity_matrix)
 
 def recommend_movie(title: str, movies_list: np.ndarray, similarity_matrix: np.ndarray) -> np.ndarray:
     '''Given a title, recommend movies
@@ -59,7 +60,7 @@ def persist(movies_list: np.ndarray, similarity_matrix: np.ndarray):
             query += f'({movie}, {rm}),\n'
     # remove newline and comma at the end
     query = query[:-2]
-    #print(query)
+    print(query)
     cur.execute(query)
     conn.commit()
 
