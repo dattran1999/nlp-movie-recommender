@@ -11,7 +11,7 @@ The current version only support reading the database from this [app](http://mov
 Alternatively, you can create a database with the schema provided in the src folder, and populate it with some movie data (e.g. data from [IMDb](https://www.imdb.com/interfaces/)). Then navigate to src/db_connection.py to change the database connection.<br /> 
 To run the code, 
 ```
-python3 src/cosine_similarity.py
+python3 -m src
 ```
 
 ## Example

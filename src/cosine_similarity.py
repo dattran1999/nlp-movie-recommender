@@ -1,4 +1,4 @@
-import db_connection
+from . import db_connection
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
@@ -44,10 +44,12 @@ def recommend_movie(title: str, movies_list: np.ndarray, similarity_matrix: np.n
     return similarity[:,0][-6:-1]
 
 def clear_table():
+    '''Clear all entries in the RecommendedMovies table'''
     cur.execute('TRUNCATE RecommendedMovies')
     conn.commit()
 
 def persist(movies_list: np.ndarray, similarity_matrix: np.ndarray):
+    '''For each movie, get the top 5 similar movies and persist the information to the database'''
     clear_table()
     query = 'INSERT INTO RecommendedMovies (movie_id, recommended_movie_id) VALUES \n'
     for i, movie in enumerate(movies_list):
@@ -60,11 +62,11 @@ def persist(movies_list: np.ndarray, similarity_matrix: np.ndarray):
             query += f'({movie}, {rm}),\n'
     # remove newline and comma at the end
     query = query[:-2]
-    print(query)
     cur.execute(query)
     conn.commit()
 
-if __name__ == "__main__":
-    #movies = recommend_movie('Spider-Man: Far from Home', movies_list[:,0], similarity_matrix)
-    #print(movies)
+def main():
     persist(movies_list[:,0], similarity_matrix)
+
+if __name__ == "__main__":
+    main()
